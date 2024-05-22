@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grade Calculator</title>
+<script>
+function calculateGrade() {
+    var score = parseFloat(document.getElementById('score').value);
+    var total = parseFloat(document.getElementById('total').value);
+    var grade = (score / total) * 100;
+    document.getElementById('result').innerText = "Your grade is: " + grade.toFixed(2) + "%";
+}
+</script>
+</head>
+<body>
+    <h1>Grade Calculator</h1>
+    <p>Enter your score and the total possible points:</p>
+    <input type="number" id="score" placeholder="Enter score" required>
+    <input type="number" id="total" placeholder="Total possible points" required>
+    <button onclick="calculateGrade()">Calculate</button>
+    <p id="result"></p>
+</body>
+</html>
