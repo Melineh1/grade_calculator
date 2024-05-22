@@ -9,26 +9,49 @@
         var nw4 = parseFloat(document.getElementById('nw4').value);
         var finalExam = parseFloat(document.getElementById('finalExam').value);
         
-        if(isNaN(nw3) || isNaN(nw4) || isNaN(finalExam)) {
+        if (isNaN(nw3) || isNaN(nw4) || isNaN(finalExam)) {
             document.getElementById('result').innerText = "Please enter valid numbers for all fields.";
             return;
         }
 
-        var finalGrade = (nw3 * 0.45) + (nw4 * 0.45) + (finalExam * 0.1);
-        document.getElementById('result').innerText = "Your final grade is: " + finalGrade.toFixed(2) + "%";
+        var finalGrade = ((nw3 * 0.45) + (nw4 * 0.45) + (finalExam * 0.1)).toFixed(2);
+        document.getElementById('result').innerText = "Your final grade is: " + finalGrade + "%";
+        document.getElementById('semester2').value = finalGrade; // Display Semester 2 calculated grade in the Semester average calculator
+    }
+
+    function calculateYearlyAverage() {
+        var semester1 = parseFloat(document.getElementById('semester1').value);
+        var semester2 = parseFloat(document.getElementById('semester2').value);
+
+        if (isNaN(semester1) || isNaN(semester2)) {
+            document.getElementById('yearResult').innerText = "Please enter valid numbers for both semesters.";
+            return;
+        }
+
+        var average = ((semester1 + semester2) / 2).toFixed(2);
+
+        if (average >= 70 && semester1 >= 60) {
+            document.getElementById('yearResult').innerText = "Congratulations! You passed for the year! Please verify with your counselor.";
+        } else {
+            document.getElementById('yearResult').innerText = "Looks like you will not pass for the year. Please see your counselor for details.";
+        }
     }
     </script>
 </head>
 <body>
     <h1>Grade Calculator</h1>
     <p>Enter the grades for NW3, NW4, and the Final Exam:</p>
-    <label for="nw3">NW3 Grade (%):</label>
     <input type="number" id="nw3" placeholder="Enter NW3 grade" required><br><br>
-    <label for="nw4">NW4 Grade (%):</label>
     <input type="number" id="nw4" placeholder="Enter NW4 grade" required><br><br>
-    <label for="finalExam">Final Exam (%):</label>
     <input type="number" id="finalExam" placeholder="Enter Final Exam grade" required><br><br>
     <button onclick="calculateFinalGrade()">Calculate Final Grade</button>
     <p id="result"></p>
+
+    <h2>Yearly Average Calculator</h2>
+    <p>Enter your Semester 1 grade and use the calculated Semester 2 grade:</p>
+    <input type="number" id="semester1" placeholder="Enter Semester 1 grade" required><br><br>
+    <input type="number" id="semester2" placeholder="Semester 2 grade appears here" required disabled><br><br>
+    <button onclick="calculateYearlyAverage()">Calculate Yearly Average</button>
+    <p id="yearResult"></p>
 </body>
 </html>
