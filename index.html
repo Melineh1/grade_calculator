@@ -5,9 +5,9 @@
     <title>DHS Gator Grade Calculator</title>
     <script>
     function calculateFinalGrade() {
-        var nw3 = parseFloat(document.getElementById('nw3').value);
-        var nw4 = parseFloat(document.getElementById('nw4').value);
-        var finalExam = parseFloat(document.getElementById('finalExam').value);
+        var nw3 = parseFloat(document.getElementById('NineWeeksA').value);
+        var nw4 = parseFloat(document.getElementById('NineWeeksB').value);
+        var finalExam = parseFloat(document.getElementById('FinalExam').value);
         
         if (isNaN(nw3) || isNaN(nw4) || isNaN(finalExam)) {
             document.getElementById('result').innerText = "Please enter valid numbers for all fields.";
